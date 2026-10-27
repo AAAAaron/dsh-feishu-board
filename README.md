@@ -38,7 +38,7 @@
 
 ```sh
 # 1) 装到 profile（三选一：npm / Git / 本地目录）
-dsh plugin --profile web add dsh-feishu-board@0.2.1
+dsh plugin --profile web add dsh-feishu-board@0.2.2
 #   或：dsh plugin --profile web add "git+https://github.com/AAAAaron/dsh-feishu-board#<40位commit>"
 #   或：dsh plugin --profile web add "link:/path/to/dsh-feishu-board"
 
