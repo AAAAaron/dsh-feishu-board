@@ -8,8 +8,8 @@
 | 层 | 做什么 | 谁审核 | 现状 |
 |---|---|---|---|
 | 1. GitHub 仓库 | 别人能 `git+https://…#<commit>` 直接装 | 无 | ✅ 已发布 |
-| 2. npm 包 | `npm publish`，索引条目才能写 `source.type = "npm"` | npm 注册 | ⬜ 需先 `npm login` |
-| 3. 社区索引 | 向 awesome-dsh-plugin 提 PR；合并后进 `dsh-plugin-catalog` → jsDelivr 索引 | 人工 | ⬜ 依赖第 2 层 |
+| 2. npm 包 | `npm publish`，索引条目才能写 `source.type = "npm"` | npm 注册 | ✅ 已发布 `dsh-feishu-board@0.2.0` |
+| 3. 社区索引 | 向 awesome-dsh-plugin 提 PR；合并后进 `dsh-plugin-catalog` → jsDelivr 索引 | 人工 | ⬜ 待提 PR（仓库满 1 天后） |
 
 ## 1. GitHub 直装（已可用）
 
@@ -22,13 +22,19 @@ dsh plugin --profile web add "git+https://github.com/AAAAaron/dsh-feishu-board#<
 
 ## 2. npm 发布
 
-包名 `dsh-feishu-board` 目前在 npm 上**未被占用**（registry 返回 404）。
+已发布：**`dsh-feishu-board@0.2.0`**（https://www.npmjs.com/package/dsh-feishu-board ），
+发布账号 `aarontxc007`，`latest` 指向 0.2.0。
 
 ```sh
-npm login            # 首次发布需要用户本人登录 + 2FA
-cd dsh-feishu-board
 npm publish --access public
 ```
+
+发布到 npm 11.16+ 时当前走**暂存发布（staged publishing）**：`npm publish` 返回 202，
+注册表先出现一个 `0.0.0-stage` 占位版本，真实的 0.2.0 在约 1 分钟内完成处理、`latest` 切过去。
+占位版本留在版本列表里，属正常，不影响安装。
+
+认证：账号开了 2FA，`npm publish` 需要 OTP 或**带 Bypass 2FA 的 granular token**。本机已在
+`~/.npmrc`（权限 600）存这种 token，直接 `npm publish` 即可。
 
 发布前确认 `package.json`：
 
@@ -96,8 +102,15 @@ PR 只加一个文件 `data/plugins/AAAAaron__dsh-feishu-board.yml`，内容见�
 把自己的 `index.json` 作为 npm 包里的一个文件发布（照 `dsh-plugin-catalog` 的做法），
 或者放到 GitHub Pages，然后把该 URL 告诉使用者，让他们在 Discover 里添加。
 
-## 这台机器上现在卡在哪
+## 现在的状态
 
-- `npm whoami` → `need auth`：npm 未登录，`npm publish` 会失败，且登录/2FA 只能用户本人做；
-- `gh` 已登录 `AAAAaron`，所以第 1 层已经完成；
-- 第 3 层要等第 2 层。
+- 第 1 层 ✅：仓库 `AAAAaron/dsh-feishu-board` 已公开，带 `dsh-plugin` topic；
+- 第 2 层 ✅：npm 已发布 0.2.0，本机 `~/.npmrc` 存了带 Bypass 2FA 的 granular token；
+- 第 3 层 ⬜：等仓库满 1 天（2026-10-28 13:25Z 之后）向 awesome-dsh-plugin 提 PR，
+  只加 `data/plugins/AAAAaron__dsh-feishu-board.yml` 一个文件，内容见 `docs/awesome-entry.yml`。
+
+## 安装命令（给使用者）
+
+```sh
+dsh plugin --profile web add dsh-feishu-board@0.2.0
+```

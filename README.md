@@ -1,5 +1,8 @@
 # dsh-feishu-board —— 飞书公告板（DSH 宿主插件）
 
+[![npm](https://img.shields.io/npm/v/dsh-feishu-board.svg)](https://www.npmjs.com/package/dsh-feishu-board)
+[![license](https://img.shields.io/npm/l/dsh-feishu-board.svg)](LICENSE)
+
 **一句话**：DSH 里任何会话向你提问（`ask_user_question`），问题和选项会推到你的飞书私聊；
 你在飞书里回复的**原文**，会被原样当作答案送回那个会话，它接着往下跑。
 
@@ -34,9 +37,10 @@
 ## 安装
 
 ```sh
-# 1) 装到 profile（本地目录或 Git 仓库都行）
-dsh plugin --profile web add "link:/path/to/dsh-feishu-board"
+# 1) 装到 profile（三选一：npm / Git / 本地目录）
+dsh plugin --profile web add dsh-feishu-board@0.2.0
 #   或：dsh plugin --profile web add "git+https://github.com/AAAAaron/dsh-feishu-board#<40位commit>"
+#   或：dsh plugin --profile web add "link:/path/to/dsh-feishu-board"
 
 # 2) 确认 profiles/web/package.json 的 dsh.profile.bundles 里有 "dsh-feishu-board"
 #    （dsh plugin add 不一定自动写这一条）
