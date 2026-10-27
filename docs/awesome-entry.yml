@@ -1,0 +1,9 @@
+# 提交到 awesome-dsh-plugin 的条目（一个文件就是全部投稿）。
+# 目标路径：data/plugins/AAAAaron__dsh-feishu-board.yml
+# 前提：仓库创建满 1 天、仓库带 dsh-plugin topic、package.json 声明 dsh.bundle（均已满足，期限项除外）。
+url: https://github.com/AAAAaron/dsh-feishu-board
+name: AAAAaron/dsh-feishu-board
+category: notify
+description:
+  en: 'Host-side Feishu board for dsh: pushes each session''s ask_user_question to your Feishu DM as plain text, routes your quoted reply back to the session that asked, and suppresses duplicate resends of identical notifications in the lark-cli send wrapper.'
+  zh: '宿主侧飞书公告板：把各会话的 ask_user_question 推到飞书私聊，引用回复可回填到提问的会话；发送出口包装会拦下同一条通知的重复重发。'

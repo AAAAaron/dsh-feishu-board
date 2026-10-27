@@ -78,9 +78,18 @@ Git 渠道把 `source` 换成：
 注意：社区索引**只收录已发布到 npm 的插件**；只有 GitHub 的条目可以留在 awesome 列表里（附安装命令），
 但不进 `index.json`。
 
-提交入口：`https://github.com/awesome-dsh-plugin/awesome-dsh-plugin`，向 README 列表提 PR。
-收录要求（README 原文口径）：能用 `dsh plugin add` 装、声明 `dsh.bundle`、描述与实际一致、
-分类正确、持续维护。失修会被移除；上榜不等于安全审查。
+提交入口：`https://github.com/awesome-dsh-plugin/awesome-dsh-plugin`。**不要改 README**（由脚本生成），
+PR 只加一个文件 `data/plugins/AAAAaron__dsh-feishu-board.yml`，内容见本仓库 `docs/awesome-entry.yml`。
+收录要求（`contributing.md` 原文口径）：
+
+- 仓库 `package.json` 声明 `dsh.bundle`（本仓库已有 `cordis.patch.yml`）；
+- 真实可用的代码；
+- **仓库创建满 1 天**（CI 自动检查，PR 时现建仓会被拒）；
+- 仓库带 `dsh-plugin` topic；
+- 描述只写功能、必须与代码一致（会给"数字/API 名"对账）；
+- 分类贴近实际用途，选偏了维护者会改，不因此打回。
+
+失修会被移除；上榜**不等于**安全审查。
 
 ## 4. 完全自主的索引（不依赖别人合并）
 
