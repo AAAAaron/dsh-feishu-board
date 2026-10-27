@@ -1,0 +1,48 @@
+{
+  "name": "dsh-feishu-board",
+  "version": "0.2.0",
+  "description": "飞书公告板：把 DSH 各会话的 ask_user_question 推到飞书私聊，把你回复的原文回填到原会话。宿主侧常驻，与具体会话无关。",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AAAAaron/dsh-feishu-board.git"
+  },
+  "homepage": "https://github.com/AAAAaron/dsh-feishu-board",
+  "bugs": {
+    "url": "https://github.com/AAAAaron/dsh-feishu-board/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "feishu",
+    "lark",
+    "notification",
+    "ask-user",
+    "human-in-the-loop"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.1-rc.2"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "lark-cli-shim.js",
+    "install-lark-shim.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

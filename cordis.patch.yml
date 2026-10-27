@@ -1,0 +1,16 @@
+# dsh-feishu-board 的 bundle patch：把宿主半侧挂进 profile 组合。
+#
+# 启用方式（profiles/<profile>/package.json 需同时具备两项）：
+#   dependencies 里加  "dsh-feishu-board": "link:<本目录>" 或 "git+https://…#<commit>"
+#   dsh.profile.bundles 里加 "dsh-feishu-board"
+#
+# 配置优先级：这里的 config > 环境变量 > 内置默认值。
+# 必填的 chatId / userOpenId 建议直接用环境变量，仓库里不留个人 ID：
+#   DSH_FEISHU_CHAT_ID=oc_xxx  DSH_FEISHU_USER_OPEN_ID=ou_xxx
+#
+# 组合只在 dsh web 启动时组装一次，改完要重启一次宿主。
+- insert:
+    - id: feishu-board
+      name: 'dsh-feishu-board'
+      config:
+        pollIntervalMs: 10000
